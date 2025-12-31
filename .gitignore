@@ -1,0 +1,10 @@
+# ---- data logs ----
+
+# optional: generated data
+*.csv
+*.zip
+
+# editor temp files
+*~
+*.swp
+

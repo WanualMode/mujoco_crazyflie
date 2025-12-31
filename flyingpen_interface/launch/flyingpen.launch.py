@@ -1,7 +1,6 @@
 from launch import LaunchDescription
 from launch_ros.actions import Node
 from ament_index_python.packages import get_package_share_directory
-
 import os
 
 
@@ -16,6 +15,7 @@ def generate_launch_description():
         executable="plant",
         name="plant",
         output="screen",
+        parameters=[params],   # ✅ 추가 (plant: ros__parameters: noise: ... 읽음)
     )
 
     controller_node = Node(
@@ -33,7 +33,6 @@ def generate_launch_description():
         output="screen",
     )
 
-    # ✅ trajectory_generation node 추가
     trajectory_generation_node = Node(
         package="flyingpen",
         executable="trajectory_generation",
@@ -44,7 +43,7 @@ def generate_launch_description():
     return LaunchDescription([
         plant_node,
         controller_node,
-        trajectory_generation_node,  # ← 여기
+        trajectory_generation_node,
         data_logger_node,
     ])
 

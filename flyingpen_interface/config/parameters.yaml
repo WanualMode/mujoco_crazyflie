@@ -21,15 +21,15 @@ low_level_controller:
     # ---------------- gains ----------------
     # Position loop: pos error -> v_des
     pos:
-      x: { kp: 1.0, kd: 0.01 }
-      y: { kp: 1.0, kd: 0.01 }
-      z: { kp: 2.0, kd: 0.01 }
+      x: { kp: 3.0, kd: 0.01 }
+      y: { kp: 3.0, kd: 0.01 }
+      z: { kp: 3.0, kd: 0.01 }
 
     # Velocity loop: vel error -> a_des
     vel:
-      x: { kp: 2.0, kd: 0.1 }
-      y: { kp: 2.0, kd: 0.1 }
-      z: { kp: 3.0, kd: 0.1 }
+      x: { kp: 5.0, kd: 0.1 }
+      y: { kp: 5.0, kd: 0.1 }
+      z: { kp: 5.0, kd: 0.1 }
 
     # Attitude loop: (roll_d, pitch_d, yaw_d) error -> w_des
     att:
@@ -39,6 +39,17 @@ low_level_controller:
 
     # Rate loop: w error -> torque
     rate:
-      roll:  { kp: 0.001, kd: 0.00001 }
-      pitch: { kp: 0.001, kd: 0.00001 }
-      yaw:   { kp: 0.001, kd: 0.00001 }
+      roll:  { kp: 0.005, kd: 0.00001 }
+      pitch: { kp: 0.005, kd: 0.00001 }
+      yaw:   { kp: 0.005, kd: 0.00001 }
+      
+plant:
+  ros__parameters:
+    noise:
+      enable: true
+      seed: 0
+      pos_var: [1e-6, 1e-6, 1e-6]
+      vel_var: [1e-4, 1e-4, 1e-4]
+      att_var: [1e-6, 1e-6, 1e-6]
+      ang_vel_var: [4e-6, 4e-6, 4e-6]
+      ang_acc_var: [1e-2, 1e-2, 1e-2]

@@ -204,7 +204,7 @@ private:
   bool sp_received_{false};
 
   // params/commands
-  float su_cmd_use_vel_mode_{1.0f}; // default: vel mode
+  float su_cmd_use_vel_mode_{0.0f}; // default: position mode
   float su_cmd_fx_{0.0f};           // F_des_x (저장만)
 
   // integrator state
