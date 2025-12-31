@@ -27,7 +27,16 @@ def generate_launch_description():
         parameters=[params],
     )
 
+        # ---------- trajectory generation ----------
+    trajectory_node = Node(
+        package="flyingpen",
+        executable="trajectory_generation",
+        name="trajectory_generation",
+        output="screen",
+    )
+
     return LaunchDescription([
         plant_node,
         controller_node,
+        trajectory_node,
     ])
